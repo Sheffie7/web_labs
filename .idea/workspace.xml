@@ -27,7 +27,9 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../lab3/basic" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -58,7 +60,25 @@
       <option name="presentableId" value="Default" />
       <updated>1601710589528</updated>
       <workItem from="1601710590901" duration="1283000" />
-      <workItem from="1604661648011" duration="19664000" />
+      <workItem from="1604661648011" duration="20792000" />
+      <workItem from="1605892945755" duration="118000" />
+      <workItem from="1605893205858" duration="7677000" />
+      <workItem from="1605908792512" duration="1964000" />
+      <workItem from="1605939391840" duration="7051000" />
+      <workItem from="1608330105892" duration="614000" />
+      <workItem from="1608898199828" duration="205000" />
+      <workItem from="1608898900877" duration="187000" />
+      <workItem from="1608899222030" duration="1842000" />
+      <workItem from="1608901559041" duration="1797000" />
+      <workItem from="1608903367130" duration="1796000" />
+      <workItem from="1608905175968" duration="1796000" />
+      <workItem from="1608906989004" duration="1800000" />
+      <workItem from="1608908802372" duration="851000" />
+      <workItem from="1608910282545" duration="455000" />
+      <workItem from="1608910838983" duration="31000" />
+      <workItem from="1608911040000" duration="25000" />
+      <workItem from="1608911075213" duration="481000" />
+      <workItem from="1608917799345" duration="138000" />
     </task>
     <servers />
   </component>
@@ -66,10 +86,18 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="586" y="198" key="#Inspections" timestamp="1605940576607">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="586" y="198" key="#Inspections/0.0.1920.1040@0.0.1920.1040" timestamp="1605940576607" />
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604667836466">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604667836466" />
+    <state x="190" y="405" key="FileChooserDialogImpl" timestamp="1608917946782">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="190" y="405" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1608917946782" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1601710670522">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

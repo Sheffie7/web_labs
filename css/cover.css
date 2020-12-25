@@ -91,6 +91,9 @@ body {
  */
 .cover {
     padding: 0 1.5rem;
+    /*display: flex;*/
+    /*min-height: 100vh;*/
+    /*flex-direction: column;*/
 }
 .cover .btn-lg {
     padding: .75rem 1.25rem;
@@ -103,8 +106,5 @@ body {
  */
 .mastfoot {
     color: rgba(0, 0, 0, .5);
+    /*flex: 1;*/
 }
-
-
-
-
