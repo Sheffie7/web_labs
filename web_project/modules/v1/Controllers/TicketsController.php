@@ -9,7 +9,7 @@ class TicketsController extends ApiController {
             ['text' => 'Губкин', 'value' => 'Губкин']
         ];
     }
-    public function actionArrival_stations() {
+    public function actionDestination_stations() {
         return [
             ['text' => 'Белгород', 'value' => 'Белгород'],
             ['text' => 'Воронеж', 'value' => 'Воронеж'],
