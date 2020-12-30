@@ -14,10 +14,9 @@ class m201227_095712_create_tickets_table extends Migration
     {
         $this->createTable('{{%tickets}}', [
             'id' => $this->primaryKey(),
-            'userId' => $this->integer()->notNull()->comment('ID пассажира'),
+            'userId' => $this->integer()->notNull()->comment('ID пассажира? Если ID = 1 - значит пассажира нет.'),
             'tripId' => $this->integer()->notNull()->comment('ID маршрута'),
             'seat' => $this->integer()->notNull()->comment('номер места в автобусе'),
-            //'isBought' => $this->boolean()->notNull()->comment('Куплен ли билет? true - да, false - нет'),
 
             'createdAt' => $this->dateTime()->notNull()->comment('Дата создания'),
             'updatedAt' => $this->dateTime()->comment('Дата изменения')

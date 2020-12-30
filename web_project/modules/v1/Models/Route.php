@@ -1,8 +1,9 @@
 <?php
+//200
 
-namespace app\models;
+namespace app\modules\v1\models;
 
-use Yii;
+use app\modules\v1\models\BaseModel;
 
 /**
  * This is the model class for table "routes".
@@ -15,11 +16,11 @@ use Yii;
  * @property string $createdAt Дата создания
  * @property string|null $updatedAt Дата изменения
  *
- * @property Stations $departure
- * @property Stations $destination
- * @property Trips[] $trips
+ * @property Station $departure
+ * @property Station $destination
+ * @property Trip[] $trips
  */
-class Route extends \yii\db\ActiveRecord
+class Route extends BaseModel
 {
     /**
      * {@inheritdoc}
@@ -40,8 +41,8 @@ class Route extends \yii\db\ActiveRecord
             [['price'], 'number'],
             [['createdAt', 'updatedAt'], 'safe'],
             [['name'], 'string', 'max' => 65],
-            [['departureId'], 'exist', 'skipOnError' => true, 'targetClass' => Stations::className(), 'targetAttribute' => ['departureId' => 'id']],
-            [['destinationId'], 'exist', 'skipOnError' => true, 'targetClass' => Stations::className(), 'targetAttribute' => ['destinationId' => 'id']],
+            [['departureId'], 'exist', 'skipOnError' => true, 'targetClass' => Station::className(), 'targetAttribute' => ['departureId' => 'id']],
+            [['destinationId'], 'exist', 'skipOnError' => true, 'targetClass' => Station::className(), 'targetAttribute' => ['destinationId' => 'id']],
         ];
     }
 
@@ -68,7 +69,7 @@ class Route extends \yii\db\ActiveRecord
      */
     public function getDeparture()
     {
-        return $this->hasOne(Stations::className(), ['id' => 'departureId']);
+        return $this->hasOne(Station::className(), ['id' => 'departureId']);
     }
 
     /**
@@ -78,7 +79,7 @@ class Route extends \yii\db\ActiveRecord
      */
     public function getDestination()
     {
-        return $this->hasOne(Stations::className(), ['id' => 'destinationId']);
+        return $this->hasOne(Station::className(), ['id' => 'destinationId']);
     }
 
     /**
@@ -88,6 +89,6 @@ class Route extends \yii\db\ActiveRecord
      */
     public function getTrips()
     {
-        return $this->hasMany(Trips::className(), ['routeId' => 'id']);
+        return $this->hasMany(Trip::className(), ['routeId' => 'id']);
     }
 }

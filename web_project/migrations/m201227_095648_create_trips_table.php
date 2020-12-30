@@ -3,7 +3,7 @@
 use yii\db\Migration;
 
 /**
- * Handles the creation of table `{{%trisp}}`.
+ * Handles the creation of table `{{%trips}}`.
  */
 class m201227_095648_create_trips_table extends Migration
 {

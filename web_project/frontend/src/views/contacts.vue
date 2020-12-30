@@ -1,14 +1,16 @@
 <template>
   <div class="contacts">
     <main role="main" class="inner cover">
-      <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <h1 class="cover-heading">Контакты</h1>
         <div align = "left">
-          <p>Телефон справочной: ...</p>
-          <p>Эл почта: ...</p>
-          <h1>Текущая страница находится в разработке</h1>
+        <h1 class="cover-heading">Контакты</h1>
+          <p>
+            <font size="5">
+            Телефон справочной: +7(4722)35-55-53 <br>
+            Эл. почта: wearecurrentlynotworking@noserver.com <br> <br>
+              Мы находимся по адресу: г. Губкин, ул. Пушкина 1, д. Колотушкина 2
+            </font>
+          </p>
         </div>
-      </div>
     </main>
   </div>
 </template>

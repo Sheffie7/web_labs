@@ -21,10 +21,26 @@ const routes = [
     component: () => import(/* webpackChunkName: "login" */ '../views/login.vue')
   },
   {
-    path: '/schedule',
-    name: 'schedule',
-    component: () => import(/* webpackChunkName: "login" */ '../views/schedule.vue')
+    path: '/profile',
+    name: 'profile',
+    component: () => import(/* webpackChunkName: "profile" */ '../views/profile.vue')
+  },
+  {
+    path: '/trips',
+    name: 'trips',
+    component: () => import(/* webpackChunkName: "tickets" */ '../views/trips.vue')
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: () => import(/* webpackChunkName: "register" */ '../views/register.vue')
+  },
+  {
+    path: '/showtickets',
+    name: 'showtickets',
+    component: () => import(/* webpackChunkName: "register" */ '../views/showtickets.vue')
   }
+
 ]
 
 const router = new VueRouter({

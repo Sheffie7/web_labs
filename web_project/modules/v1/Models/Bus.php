@@ -1,8 +1,9 @@
 <?php
+//200
 
-namespace app\models;
+namespace app\modules\v1\models;
 
-use Yii;
+use app\modules\v1\models\BaseModel;
 
 /**
  * This is the model class for table "buses".
@@ -12,9 +13,9 @@ use Yii;
  * @property string $plate_num Государственный номер автобуса
  * @property int $seats_amount Количество мест всего
  *
- * @property Trips[] $trips
+ * @property Trip[] $trips
  */
-class Bus extends \yii\db\ActiveRecord
+class Bus extends BaseModel
 {
     /**
      * {@inheritdoc}
@@ -50,6 +51,16 @@ class Bus extends \yii\db\ActiveRecord
         ];
     }
 
+    public function toArray(array $fields = [], array $expand = [], $recursive = true)
+    {
+        return [
+            'id' => $this->id,
+            'driver_name' => $this->driver_name,
+            'plate_num' => $this->plate_num,
+            'seats_amount' => $this->seats_amount
+        ];
+    }
+
     /**
      * Gets query for [[Trips]].
      *
@@ -57,6 +68,6 @@ class Bus extends \yii\db\ActiveRecord
      */
     public function getTrips()
     {
-        return $this->hasMany(Trips::className(), ['busId' => 'id']);
+        return $this->hasMany(Trip::className(), ['busId' => 'id']);
     }
 }

@@ -1,4 +1,5 @@
 <?php
+//200
 
 namespace app\modules\v1\controllers;
 
@@ -10,8 +11,8 @@ use yii\filters\VerbFilter;
 use yii\rest\Controller;
 use yii\web\Response;
 
-use yii\filters\auth\HttpBearerAuth;
-use yii\filters\AccessControl;
+//use yii\filters\auth\HttpBearerAuth;
+//use yii\filters\AccessControl;
 
 class ApiController extends Controller
 {

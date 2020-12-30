@@ -1,8 +1,9 @@
 <?php
+//200
 
-namespace app\models;
+namespace app\modules\v1\models;
 
-use Yii;
+use app\modules\v1\models\BaseModel;
 
 /**
  * This is the model class for table "trips".
@@ -15,11 +16,11 @@ use Yii;
  * @property string $createdAt Дата создания
  * @property string|null $updatedAt Дата изменения
  *
- * @property Tickets[] $tickets
- * @property Buses $bus
- * @property Routes $route
+ * @property Ticket[] $tickets
+ * @property Bus $bus
+ * @property Route $route
  */
-class Trip extends \yii\db\ActiveRecord
+class Trip extends BaseModel
 {
     /**
      * {@inheritdoc}
@@ -38,8 +39,8 @@ class Trip extends \yii\db\ActiveRecord
             [['busId', 'departureTime', 'destinationTime', 'createdAt'], 'required'],
             [['busId', 'routeId'], 'integer'],
             [['departureTime', 'destinationTime', 'createdAt', 'updatedAt'], 'safe'],
-            [['busId'], 'exist', 'skipOnError' => true, 'targetClass' => Buses::className(), 'targetAttribute' => ['busId' => 'id']],
-            [['routeId'], 'exist', 'skipOnError' => true, 'targetClass' => Routes::className(), 'targetAttribute' => ['routeId' => 'id']],
+            [['busId'], 'exist', 'skipOnError' => true, 'targetClass' => Bus::className(), 'targetAttribute' => ['busId' => 'id']],
+            [['routeId'], 'exist', 'skipOnError' => true, 'targetClass' => Route::className(), 'targetAttribute' => ['routeId' => 'id']],
         ];
     }
 
@@ -59,6 +60,27 @@ class Trip extends \yii\db\ActiveRecord
         ];
     }
 
+    public function toArray(array $fields = [], array $expand = [], $recursive = true)
+    {
+        $res = [
+            'route' => $this->route,
+            'bus' => $this->bus,
+            'departureTime' => $this->departureTime,
+            'destinationTime' => $this->destinationTime
+        ];
+
+        return [
+            'id' => $this->id,
+            'name' => $res['route']['name'],
+            'departure' => $res['route']['departure']['name'],
+            'destination' => $res['route']['destination']['name'],
+            'departureTime' => $this->departureTime,
+            'destinationTime' => $this->destinationTime,
+            'price' => $this ->route['price'],
+            'emptySeats' =>  $this -> getEmptySeats()
+        ];
+    }
+
     /**
      * Gets query for [[Tickets]].
      *
@@ -66,7 +88,7 @@ class Trip extends \yii\db\ActiveRecord
      */
     public function getTickets()
     {
-        return $this->hasMany(Tickets::className(), ['userId' => 'id']);
+        return $this->hasMany(Ticket::className(), ['userId' => 'id']);
     }
 
     /**
@@ -76,7 +98,20 @@ class Trip extends \yii\db\ActiveRecord
      */
     public function getBus()
     {
-        return $this->hasOne(Buses::className(), ['id' => 'busId']);
+        return $this->hasOne(Bus::className(), ['id' => 'busId']);
+    }
+
+    public function getName()
+    {
+        $tmp = ['route' => $this->route];
+        return $tmp['route']['name'];
+    }
+
+    public function getEmptySeats(){
+        return count(Ticket::find()
+            ->with('trip')
+            ->where(['tripId' => $this->id, 'userId' => '1'])
+            ->all());
     }
 
     /**
@@ -86,6 +121,6 @@ class Trip extends \yii\db\ActiveRecord
      */
     public function getRoute()
     {
-        return $this->hasOne(Routes::className(), ['id' => 'routeId']);
+        return $this->hasOne(Route::className(), ['id' => 'routeId']);
     }
 }

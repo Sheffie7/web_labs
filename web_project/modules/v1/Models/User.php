@@ -1,22 +1,23 @@
 <?php
 
+namespace app\modules\v1\models;
 
-namespace app\models;
-
-use Yii;
+use app\modules\v1\models\BaseModel;
 
 /**
  * This is the model class for table "users".
  *
  * @property int $id
  * @property string|null $name Имя пассажира
+ * @property string|null $email email пассажира
+ * @property string|null $password Пароль пассажира
  * @property string|null $phone Номер телефона пассажира
  * @property string $createdAt Дата создания
  * @property string|null $updatedAt Дата изменения
  *
- * @property Tickets[] $tickets
+ * @property Ticket[] $tickets
  */
-class User extends \yii\db\ActiveRecord
+class User extends BaseModel
 {
     /**
      * {@inheritdoc}
@@ -32,10 +33,15 @@ class User extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['createdAt'], 'required'],
             [['createdAt', 'updatedAt'], 'safe'],
-            [['name', 'phone'], 'string', 'max' => 128],
+            [['name', 'email', 'phone'], 'string', 'max' => 128],
+            [['password'], 'string', 'max' => 32],
         ];
+    }
+
+    public function behaviors()
+    {
+        return parent::behaviors();
     }
 
     /**
@@ -46,9 +52,21 @@ class User extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Name',
+            'email' => 'Email',
+            'password' => 'Password',
             'phone' => 'Phone',
             'createdAt' => 'Created At',
             'updatedAt' => 'Updated At',
+        ];
+    }
+
+    public function toArray(array $fields = [], array $expand = [], $recursive = true)
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'phone' => $this->phone,
+            'email' => $this->email,
         ];
     }
 
@@ -59,6 +77,22 @@ class User extends \yii\db\ActiveRecord
      */
     public function getTickets()
     {
-        return $this->hasMany(Tickets::className(), ['userId' => 'id']);
+        return $this->hasMany(Ticket::className(), ['userId' => 'id']);
+    }
+
+    public function checkPass($password)
+    {
+        return $this->password == $password;
+    }
+
+    public function getUser()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'phone' => $this->phone,
+            'accessToken' => md5(microtime(null))
+        ];
     }
 }
+

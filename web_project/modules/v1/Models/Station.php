@@ -1,9 +1,10 @@
 <?php
+//200
 
 
-namespace app\models;
+namespace app\modules\v1\models;
 
-use Yii;
+use app\modules\v1\models\BaseModel;
 
 /**
  * This is the model class for table "stations".
@@ -11,10 +12,10 @@ use Yii;
  * @property int $id
  * @property string $name Название населенного пункта
  *
- * @property Routes[] $routes
- * @property Routes[] $routes0
+ * @property Route[] $routes
+ * @property Route[] $routes0
  */
-class Station extends \yii\db\ActiveRecord
+class Station extends BaseModel
 {
     /**
      * {@inheritdoc}
@@ -53,7 +54,7 @@ class Station extends \yii\db\ActiveRecord
      */
     public function getRoutes()
     {
-        return $this->hasMany(Routes::className(), ['departureId' => 'id']);
+        return $this->hasMany(Route::className(), ['departureId' => 'id']);
     }
 
     /**
@@ -63,6 +64,6 @@ class Station extends \yii\db\ActiveRecord
      */
     public function getRoutes0()
     {
-        return $this->hasMany(Routes::className(), ['destinationId' => 'id']);
+        return $this->hasMany(Route::className(), ['destinationId' => 'id']);
     }
 }
